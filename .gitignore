@@ -1,0 +1,25 @@
+# Vagrant files
+.vagrant/
+*.box
+
+# Token K3s (sensible)
+node-token
+
+# Logs / debug / output
+*.log
+*.out
+*.err
+
+# OS and editor metadata
+.DS_Store
+Thumbs.db
+
+# Temp and backup
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Optional: VSCode config
+.vscode/
