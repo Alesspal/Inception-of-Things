@@ -36,11 +36,11 @@ echo "[$HOSTNAME] Applying deployments and services..."
 kubectl apply -f "$APP1_PATH/deployment.yaml"
 kubectl apply -f "$APP1_PATH/service.yaml"
 
-#kubectl apply -f "$APP2_PATH/deployment.yaml"
-#kubectl apply -f "$APP2_PATH/service.yaml"
+kubectl apply -f "$APP2_PATH/deployment.yaml"
+kubectl apply -f "$APP2_PATH/service.yaml"
 
-#kubectl apply -f "$APP3_PATH/deployment.yaml"
-#kubectl apply -f "$APP3_PATH/service.yaml"
+kubectl apply -f "$APP3_PATH/deployment.yaml"
+kubectl apply -f "$APP3_PATH/service.yaml"
 
 echo "[$HOSTNAME] Applying ingress..."
 kubectl apply -f "$MANIFESTS_PATH/ingress.yaml"
