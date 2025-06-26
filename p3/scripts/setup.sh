@@ -19,8 +19,7 @@ mv kubectl /usr/local/bin/
 
 # créer le cluster K3d avec les bons ports exposés
 k3d cluster create iot42-cluster \
-    -p "8080:443@loadbalancer" \
-    -p "8888:30088@loadbalancer"
+    -p "8080:80@loadbalancer"
 
 # créer les namespaces nécessaires (argocd, dev)
 kubectl create namespace argocd 
@@ -29,5 +28,12 @@ kubectl create namespace dev
 # installer Argo CD dans le namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/master/manifests/install.yaml
 
-# appliquer le fichier Argo CD Application (confs/argocd-iot42.yaml)
-kubectl apply -f ./argocd-iot42.yaml
+kubectl -n argocd patch deployment argocd-server \
+  --type='json' \
+  -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--insecure"}]'
+
+# appliquer l'ingress controller de l'argocd
+kubectl apply -f ./argocd-iot42-ingress.yaml
+
+# appliquer le fichier Argo CD Application (confs/argocd-iot42-app.yaml)
+kubectl apply -f ./argocd-iot42-app.yaml
