@@ -1,7 +1,7 @@
 #!/bin/bash
 
 HOSTNAME="apalumbiS"
-MANIFESTS_PATH="/vagrant/manifests"
+MANIFESTS_PATH="/vagrant/confs"
 APP1_PATH="$MANIFESTS_PATH/app1"
 APP2_PATH="$MANIFESTS_PATH/app2"
 APP3_PATH="$MANIFESTS_PATH/app3"
